@@ -1,0 +1,65 @@
+# contact_book.py
+"""
+Day 5: Contact Book
+- Store contacts in a list of dictionaries
+- Each contact has: name + phone
+"""
+
+contacts = []  # empty list: will hold {"name": ..., "phone": ...}
+def add_contact():
+    name = input("Enter name: ")
+    phone = input("Enter phone: ")
+    contacts.append({"name": name, "phone": phone})
+    print("Contact added.")
+def search_contact():
+    name = input("Enter name to search: ")
+    for c in contacts:             # loop through each contact dictionary
+        if c["name"] == name:      # check if the "name" matches
+            print("Phone:", c["phone"])
+            return                 # stop as soon as we find a match
+    print("Not found.")            # if loop finishes with no match
+contacts = [
+    {"name": "Alice", "phone": "123"},
+    {"name": "Bob", "phone": "555"}
+]
+
+search_contact()
+def delete_contact():
+    name = input("Enter name to delete: ")
+    global contacts
+    contacts = [c for c in contacts if c["name"] != name]
+    print("Contact deleted (if it existed).")
+def show_all():
+    for c in contacts:
+        print(c["name"], "-", c["phone"])
+contacts = [
+    {"name": "Alice", "phone": "123"},
+    {"name": "Bob", "phone": "555"}
+]
+
+print("Before deletion:")
+show_all()
+
+delete_contact()   # <-- program will pause here and ask you to type a name
+
+print("After deletion:")
+show_all()
+def main():
+    while True:   # repeat until user chooses quit
+        print("\n1 = Add, 2 = Search, 3 = Delete, 4 = Show all, 5 = Quit")
+        choice = input("Choose: ")
+
+        if choice == "1":
+            add_contact()
+        elif choice == "2":
+            search_contact()
+        elif choice == "3":
+            delete_contact()
+        elif choice == "4":
+            show_all()
+        elif choice == "5":
+            break   # exit loop → program ends
+        else:
+            print("Invalid choice.")
+if __name__ == "__main__":
+    main()
