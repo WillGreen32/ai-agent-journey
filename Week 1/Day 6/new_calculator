@@ -1,0 +1,76 @@
+"""
+Calculator (CLI)
+Performs +, -, *, / with input validation and friendly error messages.
+"""
+
+
+# contact_book.py (dict version)
+"""
+Day 6: Contact Book (dict-based) with error handling
+- Safe search: catch KeyError
+- Add/Delete/Show/Search loop
+"""
+
+contacts = {
+    "alice": "12345",
+    "bob": "555-0011",
+}
+
+def normalize(name: str) -> str:
+    # Make user input match our stored keys
+    return name.strip().lower()
+
+def display(name: str) -> str:
+    # Pretty printing for the user
+    return name.title()
+
+def search_contact():
+    name = normalize(input("Enter name to search: "))
+    try:
+        print("Phone:", contacts[name])  # risky (KeyError if missing)
+    except KeyError:
+        print("That contact doesn’t exist.")
+
+def add_contact():
+    name = normalize(input("Enter name: "))
+    phone = input("Enter phone: ").strip()
+    if not name:
+        print("Name cannot be empty.")
+        return
+    contacts[name] = phone
+    print(f"Added {display(name)} -> {phone}")
+
+def delete_contact():
+    name = normalize(input("Enter name to delete: "))
+    removed = contacts.pop(name, None)
+    if removed is None:
+        print("That contact doesn’t exist.")
+    else:
+        print(f"Deleted {display(name)} (was {removed})")
+
+def show_all():
+    if not contacts:
+        print("(No contacts)")
+        return
+    for n, p in contacts.items():
+        print(f"- {display(n)}: {p}")
+
+def main():
+    while True:
+        print("\n1=Add  2=Search  3=Delete  4=Show all  5=Quit")
+        choice = input("Choose: ").strip()
+        if choice == "1":
+            add_contact()
+        elif choice == "2":
+            search_contact()
+        elif choice == "3":
+            delete_contact()
+        elif choice == "4":
+            show_all()
+        elif choice == "5":
+            break
+        else:
+            print("Invalid choice.")
+
+if __name__ == "__main__":
+    main()

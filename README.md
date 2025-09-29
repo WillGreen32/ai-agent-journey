@@ -54,3 +54,20 @@ python contact_book.py
 ```bash
 python calculator.py
 python contact_book.py
+
+# Week 1 Utility Pack
+
+A compact set of beginner-friendly Python scripts from Week 1.
+
+## Scripts
+- **calculator.py** — CLI calculator for +, -, *, /
+- **file_processor.py** — Reads a .txt file and prints line/word/char counts
+- **contact_book.py** — Add, search, delete, list contacts (name → phone)
+- **grade_checker.py** — Input score (0–100) → letter grade (A–F)
+- **number_analyzer.py** — Even/odd classification up to N
+
+## How to run
+```bash
+python scriptname.py
+# or from repo root:
+python week1_utilities/scriptname.py

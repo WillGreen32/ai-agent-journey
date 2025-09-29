@@ -1,0 +1,12 @@
+contacts = [
+    {"name": "Alice", "phone": "123"},
+    {"name": "Bob", "phone": "555"}
+]
+
+print("Before deletion:")
+show_all()
+
+delete_contact()   # <-- program will pause here and ask you to type a name
+
+print("After deletion:")
+show_all()

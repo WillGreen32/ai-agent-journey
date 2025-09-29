@@ -1,0 +1,4 @@
+prices = {"apple": 2.5, "banana": 1.8}
+fruit = input("Enter a fruit name: ")
+price = prices.get(fruit, "Not sold")
+print(price)

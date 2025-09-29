@@ -1,0 +1,8 @@
+foods = ["pizza", "sushi", "ice cream"]
+print("foods:", foods)
+print("first food:", foods[0])   # pizza
+print("last food:", foods[-1])   # ice cream
+foods.append("ramen")
+print("after append:", foods)
+foods.remove("sushi")
+print("after remove sushi:", foods)

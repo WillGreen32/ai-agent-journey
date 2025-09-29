@@ -1,0 +1,20 @@
+# 1) Make the dict
+movie = {"title": "Interstellar", "year": 2014, "genre": "sci-fi"}
+print("start:", movie)
+
+# 2) Print the genre (direct + safe)
+print("genre direct:", movie["genre"])
+print("genre safe:", movie.get("genre", "Unknown"))
+
+# 3) Add rating
+movie["rating"] = 8.6
+print("after rating:", movie)
+
+# 4) Remove year (safe)
+removed_year = movie.pop("year", None)
+print("removed year value:", removed_year)
+print("after removing year:", movie)
+
+# 5) Bonus: add multiple with update
+movie.update({"director": "Christopher Nolan", "runtime_mins": 169})
+print("final:", movie)

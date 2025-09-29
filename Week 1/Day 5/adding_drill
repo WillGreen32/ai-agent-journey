@@ -1,0 +1,33 @@
+fruits = ["apple", "banana", "cherry"]
+print("start:", fruits)
+
+# 1) Append one item
+fruits.append("orange")
+print("after append:", fruits)  # expect ['apple','banana','cherry','orange']
+
+# 2) Insert at index 1
+fruits.insert(1, "kiwi")
+print("after insert@1:", fruits)  # expect ['apple','kiwi','banana','cherry','orange']
+
+# 3) Extend with two items
+fruits.extend(["pear", "grape"])
+print("after extend:", fruits)    # expect ['apple','kiwi','banana','cherry','orange','pear','grape']
+
+# 4) Append vs Extend difference
+nums = [1, 2, 3]
+nums.append([4, 5])
+print("append list:", nums)       # expect [1,2,3,[4,5]]
+
+nums = [1, 2, 3]
+nums.extend([4, 5])
+print("extend list:", nums)       # expect [1,2,3,4,5]
+
+# 5) + vs +=
+a = ["x", "y"]
+b = a + ["z"]
+print("a:", a)                    # expect ['x','y']
+print("b (new):", b)              # expect ['x','y','z']
+
+c = ["x", "y"]
+c += ["z"]
+print("c (mutated):", c)          # expect ['x','y','z']

@@ -4,6 +4,10 @@ Day 5: Contact Book
 - Store contacts in a list of dictionaries
 - Each contact has: name + phone
 """
+"""
+Contact Book (CLI)
+Add, search, delete, and list contacts (name → phone). Includes input validation and clear error messages.
+"""
 
 contacts = []  # empty list: will hold {"name": ..., "phone": ...}
 def add_contact():
