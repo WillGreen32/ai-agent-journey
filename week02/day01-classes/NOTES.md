@@ -96,3 +96,55 @@ I can now:
 - Explain `__init__` and `self` clearly.
 - Spot and avoid pitfalls (missing args, forgotten `self`, dynamic attributes).
 - Write a simple class in <2 minutes without reference.
+
+### Creating Objects — Block 1
+- Each `Car(...)` or `Student(...)` call creates a new object.
+- Objects have unique memory identities (`id(obj)`).
+- Even if they share the same class, their data is independent.
+
+### Creating Objects — Block 2
+- Each object is independent. Updating one doesn’t affect others.
+- Collections (lists) let me manage multiple objects in loops.
+- __dict__ shows the actual attributes inside an object at runtime.
+
+### Methods vs Functions — Block 1
+- Standalone function requires all data each time (make, model, year).
+- Method only needs `self` → the object already holds its own data.
+- Functions are stateless; methods are tied to an object’s state.
+
+### Practice Adding Methods — Block 2
+- Methods operate directly on the object’s attributes (`self.make`, `self.grade`).
+- Less repetition → no need to pass the same values around every time.
+- Car example shows logical behavior (`is_modern`) tied to its data.
+- Student example shows rules (`is_passing`) embedded into the class.
+### Methods vs Functions — Block 3 Reflection
+
+- **Instance methods (`self`)**: tied to an object, work on its attributes.
+- **Class methods (`cls`)**: tied to the class itself, can see/change class-level data.
+- **Static methods**: utility functions inside the class, don’t touch self/cls.
+
+Examples:
+- `summary()` → instance-level behavior.
+- `count()` → tracks all instances.
+- `grade_scale()` → helper, but grouped inside the class for organization.
+
+Mini-win: I can now explain the 3 method types and show examples in code.
+
+### Car Practice — returns vs side effects
+- `display_info()` returns → reusable.
+- `start_engine()` prints → immediate effect, not reusable.
+- Changing one object’s attributes doesn’t affect others.
+- `__dict__` helps me debug current object state.
+
+### Student Practice — Mutability
+- Objects are mutable → attributes can change after creation.
+- update_grade() is safer than direct assignment because:
+  - Keeps control centralized.
+  - Easier to add validation later (e.g. check grade is A–F).
+- Encapsulation: combine data (name, age, grade) with behaviors (get_grade, update_grade).
+
+### Book Practice — Stateful Objects
+- Objects can hold state that evolves over time.
+- `Book.pages` decreases as you call `read_pages`.
+- Each object is independent: b1 and b2 track their own pages.
+- This is simulation modeling in miniature → objects act like real-world things.
