@@ -1,0 +1,16 @@
+book = {"title": "Dune", "author": "Frank Herbert", "year": 1965}
+
+# 1) Access title directly
+print("Title:", book["title"])
+
+# 2) Try to access pages (will cause KeyError if uncommented)
+# print(book["pages"])
+
+# 3) Safe access with .get()
+print("Pages (safe):", book.get("pages", "Not Found"))
+
+# 4) Print just the keys
+print("Keys:", list(book.keys()))
+
+# 5) Print just the values
+print("Values:", list(book.values()))

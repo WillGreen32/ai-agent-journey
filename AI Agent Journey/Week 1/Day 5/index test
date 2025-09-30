@@ -1,0 +1,11 @@
+fruits = ["apple", "banana", "cherry"]
+print(fruits[0])    # apple
+print(fruits[-1])   # cherry
+
+# Try out-of-range
+# print(fruits[99])  # ❌ IndexError: list index out of range
+
+print(len(fruits))              # 3
+print(fruits[len(fruits)-1])    # cherry (last item safely)
+first_two = fruits[:2]
+

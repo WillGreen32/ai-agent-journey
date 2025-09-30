@@ -1,0 +1,5 @@
+shopping = "milk eggs bread".split()
+
+print(shopping)           # whole list
+print(type(shopping))     # check it's a list
+print(len(shopping))      # count items

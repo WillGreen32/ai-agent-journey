@@ -1,0 +1,34 @@
+# 1) Build the list of 3 friend dictionaries
+friends = [
+    {"name": "Alice",  "age": 21},
+    {"name": "Bob",    "age": 22},
+    {"name": "Charlie","age": 23}
+]
+
+# 2) Print the name of the second friend
+print("Second friend:", friends[1]["name"])  # Expect: Bob
+
+# 3) Add a new friend and show the list
+friends.append({"name": "Diana", "age": 24})
+print("After add:", friends)
+
+# 4) Update Alice's age to 25
+friends[0]["age"] = 25
+print("After Alice birthday:", friends[0])
+
+# 5) Remove Charlie by name using keep-only pattern
+friends = [f for f in friends if f["name"] != "Charlie"]
+print("After remove Charlie:", friends)
+
+# 6) Safety checks
+# Print last friend's name only if list not empty
+if friends:
+    print("Last friend name:", friends[-1]["name"])
+
+# Print friend at index 2 if it exists
+idx = 2
+if 0 <= idx < len(friends):
+    print("Index 2 friend:", friends[idx]["name"])
+else:
+    print("No friend at index 2")
+

@@ -1,0 +1,114 @@
+# number_analyzer.py
+"""
+Day 4: Number Analyzer (v2 + Summary)
+- Asks user for a positive integer
+- Loops from 1..N
+- Prints if each number is even or odd
+- At the end, shows a summary of totals
+"""
+
+def ask_positive_int(prompt="Enter a positive whole number (e.g., 10): "):
+    raw = input(prompt).strip()   # remove spaces around input
+    if not raw:
+        print("Oops: you entered nothing.")
+        return None
+    if not raw.isdigit():
+        print("Please enter digits only, e.g., 10")
+        return None
+    n = int(raw)
+    if n < 1:
+        print("Please enter a number that is 1 or greater.")
+        return None
+    return n
+
+def number_analyzer():
+    n = None
+    while n is None:   # keep asking until valid input
+        n = ask_positive_int()
+
+    even_count = 0
+    odd_count  = 0
+
+    for i in range(1, n + 1):
+        if i % 2 == 0:
+            print(f"{i} is even")
+            even_count += 1   # add 1 to the even tally
+        else:
+            print(f"{i} is odd")
+            odd_count += 1   # add 1 to the odd tally
+
+    # after the loop, print totals
+    print("\nSummary")
+    print("-------")
+    print(f"Total numbers: {n}")
+    print(f"Evens: {even_count}")
+    print(f"Odds:  {odd_count}")
+def ask_mode(prompt="Mode (all/evens/odds): "):
+    mode = input(prompt).strip().lower()
+    if mode not in {"all", "evens", "odds"}:
+        print("Please type: all, evens, or odds")
+        return None
+    return mode
+
+def number_analyzer():
+    n = None
+    while n is None:
+        n = ask_positive_int()
+
+    mode = None
+    while mode is None:
+        mode = ask_mode()
+
+    even_count = 0
+    odd_count  = 0
+
+    for i in range(1, n + 1):
+        if mode == "evens" and i % 2 != 0:
+            continue   # skip odd numbers
+        if mode == "odds" and i % 2 == 0:
+            continue   # skip even numbers
+
+        if i % 2 == 0:
+            print(f"{i} is even")
+            even_count += 1
+        else:
+            print(f"{i} is odd")
+            odd_count += 1
+
+    print("\nSummary")
+    print("-------")
+    print(f"Mode: {mode}")
+    print(f"Total checked: {n}")
+    print(f"Printed evens: {even_count}")
+    print(f"Printed odds:  {odd_count}")
+def ask_optional_stop(prompt="Optional: stop at first multiple of (press Enter to skip): "):
+    raw = input(prompt).strip()
+    if raw == "":
+        return None
+    if not raw.isdigit() or int(raw) == 0:
+        print("Enter a positive whole number or press Enter to skip.")
+        return ask_optional_stop(prompt)
+    return int(raw)
+
+def number_analyzer():
+    n = None
+    while n is None:
+        n = ask_positive_int()
+
+    stop_at = ask_optional_stop()
+
+    for i in range(1, n + 1):
+        if stop_at and i % stop_at == 0:
+            print(f"{i} is a multiple of {stop_at} — stopping early.")
+            break
+
+        if i % 2 == 0:
+            print(f"{i} is even")
+        else:
+            print(f"{i} is odd")
+
+    
+if __name__ == "__main__":
+    number_analyzer()
+
+

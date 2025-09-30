@@ -1,0 +1,27 @@
+# 1) Setup
+student = {"name": "Will", "age": 21, "major": "Marketing", "gpa": 3.8}
+print("start:", student)
+
+# 2) del removes without returning
+del student["age"]
+print("after del age:", student)
+
+# 3) pop removes AND returns
+val = student.pop("major")
+print("popped major:", val)
+print("after pop major:", student)
+
+# 4) safe pop with default
+credits = student.pop("credits", 0)
+print("credits (default 0 if missing):", credits)
+print("after pop credits:", student)
+
+# 5) remove multiple keys safely
+for k in ["gpa", "advisor"]:
+    student.pop(k, None)
+print("after removing gpa+advisor:", student)
+
+# 6) clear everything
+student.clear()
+print("after clear:", student)  # {}
+

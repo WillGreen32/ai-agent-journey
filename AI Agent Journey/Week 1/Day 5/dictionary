@@ -1,0 +1,6 @@
+# Make a book dictionary
+book = {"title": "Dune", "author": "Frank Herbert", "year": 1965}
+
+print(book)           # show full dictionary
+print(type(book))     # expect <class 'dict'>
+print(len(book))      # expect 3
