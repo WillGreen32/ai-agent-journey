@@ -1,0 +1,14 @@
+d1 = Demo()
+d2 = Demo()
+
+# instance method
+print(d1.instance_method())  
+print(d2.instance_method())
+
+# class method
+print(Demo.class_method())
+Demo.kind = "changed"
+print(Demo.class_method())
+
+# static method
+print(Demo.static_method(10, 20))
