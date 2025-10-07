@@ -1,0 +1,20 @@
+# Day 5 — Task Manager v2 (Collections + JSON)
+
+## Overview
+This day evolved the CLI Task Manager from v1 → v2 by adding:
+- A **Manager class** to handle collections of Task objects.
+- Full **CRUD cycle** (Create, Read, Update, Delete).
+- **JSON persistence** so data survives restarts.
+- A clean **CLI** interface with autosave/autoload and input guardrails.
+
+---
+
+## Key Learnings
+- **Encapsulation:** Classes can hide internal state (TaskManager manages all tasks).
+- **Serialization:** JSON bridges in-memory data and disk persistence.
+- **Defensive programming:** Guardrails prevent crashes on invalid input.
+- **Clean architecture:** Model ↔ Manager ↔ CLI separation keeps the code modular and testable.
+
+---
+
+## Folder Structure
