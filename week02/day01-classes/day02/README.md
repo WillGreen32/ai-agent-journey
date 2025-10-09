@@ -64,3 +64,12 @@ I can now:
 - Blocks `start()`, `reset()`, `mark_urgent()` (immutable).
 - `complete()` is a no-op (or raise if stricter policy preferred).
 - Adds `date_completed` for audit/UX and custom `__str__`.
+
+### Polymorphism demo + assertions
+- Mixed list of `Task` + subclasses shows different `__str__` outputs via one interface.
+- Behavior checks:
+  - `RecurringTask.complete()` auto-resets to `pending`.
+  - `CompletedTask.start()` raises (immutable).
+  - `WorkTask.assign()/unassign()` updates owner rendering.
+  - `UrgentTask.escalate()` bumps priority; `complete()` still uses base transition.
+- Assertions verify enum-aware statuses and owner string.

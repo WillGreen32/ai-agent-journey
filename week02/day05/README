@@ -18,3 +18,17 @@ This day evolved the CLI Task Manager from v1 → v2 by adding:
 ---
 
 ## Folder Structure
+
+
+
+Example Session:
+=== Task Manager v2 (0 tasks) ===
+[1] Add
+[2] View
+[3] Edit
+[4] Delete
+[s] Save
+[q] Quit
+Choose: 1
+Task title: Write code
+✅ Added!
