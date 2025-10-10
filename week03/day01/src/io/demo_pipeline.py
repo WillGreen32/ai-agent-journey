@@ -1,6 +1,6 @@
 from io.csv_io import load_csv, save_csv
 from io.json_io import load_json, save_json
-from io.paths import RAW, PROCESSED, ensure_dirs
+from week03.day01.src.paths import RAW, PROCESSED, ensure_dirs
 from pathlib import Path
 
 def main():
