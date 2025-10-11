@@ -1,6 +1,8 @@
 from pathlib import Path
 
-# Root = folder containing "data" and "src"
+# ROOT = .../week03/day01
+# parents[0] => .../src
+# parents[1] => .../day01   <- we want this
 ROOT = Path(__file__).resolve().parents[1]
 
 DATA = ROOT / "data"
