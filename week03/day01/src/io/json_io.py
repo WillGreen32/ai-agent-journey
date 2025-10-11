@@ -1,19 +1,13 @@
+import json
 from pathlib import Path
 
-# Project root = folder containing the "data" and "src" folders
-ROOT = Path(__file__).resolve().parents[1]
+def load_json(path: Path):
+    """Load a JSON file into Python."""
+    with open(path, encoding="utf-8") as f:
+        return json.load(f)
 
-DATA = ROOT / "data"
-RAW = DATA / "raw"
-PROCESSED = DATA / "processed"
+def save_json(path: Path, data):
+    """Save JSON with pretty formatting (UTF-8)."""
+    with open(path, "w", encoding="utf-8") as f:
+        json.dump(data, f, ensure_ascii=False, indent=2)
 
-def ensure_dirs():
-    """Create data folders if they don't exist."""
-    RAW.mkdir(parents=True, exist_ok=True)
-    PROCESSED.mkdir(parents=True, exist_ok=True)
-
-if __name__ == "__main__":
-    ensure_dirs()
-    print("ROOT:", ROOT)
-    print("RAW:", RAW, "exists:", RAW.exists())
-    print("PROCESSED:", PROCESSED, "exists:", PROCESSED.exists())

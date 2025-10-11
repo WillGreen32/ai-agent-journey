@@ -1,9 +1,6 @@
 from pathlib import Path
 
-# Project root = the folder that contains THIS file's parent "src"
-# For .../week03/day01/src/paths.py:
-# Path(__file__).resolve().parents[0] -> .../src
-# parents[1] -> .../day01   ✅ we want this
+# Root = folder containing "data" and "src"
 ROOT = Path(__file__).resolve().parents[1]
 
 DATA = ROOT / "data"
