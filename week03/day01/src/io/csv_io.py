@@ -2,14 +2,21 @@ import csv
 from pathlib import Path
 
 def load_csv(path: Path):
-    """Load CSV safely with utf-8-sig and return list of dicts."""
+    """
+    Load a CSV into a list[dict].
+    - encoding='utf-8-sig' removes BOM if present
+    - newline='' prevents newline translation weirdness
+    """
     with open(path, encoding="utf-8-sig", newline="") as f:
-        reader = csv.DictReader(f)
-        return list(reader)
+        return list(csv.DictReader(f))
 
 def save_csv(path: Path, rows, fieldnames):
-    """Write CSV with consistent quoting and newline handling."""
+    """
+    Save a list[dict] to CSV with a stable header.
+    - newline='' is REQUIRED to avoid extra blank lines on Windows/Excel
+    - encoding='utf-8' writes proper Unicode
+    """
     with open(path, "w", encoding="utf-8", newline="") as f:
-        writer = csv.DictWriter(f, fieldnames=fieldnames)
-        writer.writeheader()
-        writer.writerows(rows)
+        w = csv.DictWriter(f, fieldnames=fieldnames)
+        w.writeheader()
+        w.writerows(rows)
