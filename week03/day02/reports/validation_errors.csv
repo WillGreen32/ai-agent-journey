@@ -14,3 +14,5 @@ row,field,value,error
 12,signup_date,2025/10/12,type_error:date
 12,country,JP,not_in_allowed_set
 13,email,,required_missing
+14,email,bademail,pattern_mismatch
+15,email,@weird@@example..com,pattern_mismatch

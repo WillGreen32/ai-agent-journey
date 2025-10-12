@@ -226,6 +226,56 @@ def validate_value(field, raw_value, rules):
 
     return value, errors
 
+# --- Regex compile cache + helper --------------------------------------------
+_REGEX_CACHE = {}
+
+_FLAG_MAP = {
+    "IGNORECASE": re.IGNORECASE,
+    "MULTILINE": re.MULTILINE,
+    "DOTALL": re.DOTALL,
+    "ASCII": re.ASCII,
+    "UNICODE": re.UNICODE,  # default in Py3, but allow explicit
+}
+
+def _compile_pattern(pattern: str, flags: list | None):
+    """Compile and cache regex with optional flags from schema."""
+    key = (pattern, tuple(flags or []))
+    if key in _REGEX_CACHE:
+        return _REGEX_CACHE[key]
+    fmask = 0
+    if flags:
+        for name in flags:
+            fmask |= _FLAG_MAP.get(name.upper(), 0)
+    rex = re.compile(pattern, fmask)
+    _REGEX_CACHE[key] = rex
+    return rex
+
+def matches_pattern(value, pattern, flags=None) -> bool:
+    """
+    Return True if value fully matches regex pattern. 
+    Empty/None values are treated as 'not applicable' and pass.
+    """
+    if value is None:
+        return True
+    s = str(value)
+    if s.strip() == "":
+        return True
+    try:
+        rex = _compile_pattern(pattern, flags)
+        return bool(rex.fullmatch(s))
+    except re.error:
+        # If the pattern itself is invalid, treat as mismatch (or you could log a schema error)
+        return False
+
+
+    # --- Pattern validation (e.g., email) ---
+    pattern = rules.get("pattern")
+    if pattern and isinstance(value, str):
+        flags = rules.get("pattern_flags")  # optional: ["IGNORECASE", "MULTILINE", ...]
+        if not matches_pattern(value, pattern, flags):
+            errors.append("pattern_mismatch")
+
+
 def validate_row(row_idx: int, row: dict, schema: dict):
     """
     Validate one CSV row (dict) against schema['fields'].
