@@ -1,0 +1,10 @@
+row,field,value,error
+3,email,not-an-email,pattern_mismatch
+3,is_active, -1 ,type_error:bool
+4,email,bad@pattern,pattern_mismatch
+4,age,"1,234",above_max
+4,is_active,maybe,type_error:bool
+4,signup_date,10/03/2025,type_error:date
+6,country,JP,not_in_allowed_set
+7,email,,required_missing
+9,country,JP,not_in_allowed_set

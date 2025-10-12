@@ -1,0 +1,54 @@
+{
+    "fields": {
+        "customer_id": {
+            "required": true,
+            "type": "int"
+        },
+        "email": {
+            "required": true,
+            "type": "str",
+            "pattern": "^[^@\\n]+@[^@\\n]+\\.[^@\\n]+$"
+        },
+        "first_name": {
+            "required": true,
+            "type": "str"
+        },
+        "last_name": {
+            "required": true,
+            "type": "str"
+        },
+        "age": {
+            "required": false,
+            "type": "int",
+            "min": 0,
+            "max": 120,
+            "default": null
+        },
+        "is_active": {
+            "required": false,
+            "type": "bool",
+            "default": true
+        },
+        "signup_date": {
+            "required": true,
+            "type": "date",
+            "format": "%Y-%m-%d"
+        },
+        "country": {
+            "required": false,
+            "type": "str",
+            "allowed": [
+                "AU",
+                "NZ",
+                "US",
+                "UK"
+            ],
+            "default": "AU"
+        },
+        "loyalty_note": {
+            "required": false,
+            "type": "str",
+            "nullable": false
+        }
+    }
+}

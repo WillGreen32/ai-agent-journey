@@ -1,0 +1,13 @@
+{
+  "total_rows": 10,
+  "invalid_row_count": 5,
+  "valid_row_count": 5,
+  "errors_total": 9,
+  "errors_by_field": {
+    "email": 3,
+    "is_active": 2,
+    "age": 1,
+    "signup_date": 1,
+    "country": 2
+  }
+}
