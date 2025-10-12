@@ -111,6 +111,46 @@ def to_date(v, fmt="%Y-%m-%d", try_formats=None):
                     continue
         # If nothing worked, surface the original failure
         raise ValueError(f"not a date<{fmt}>: {v!r}")
+    
+# --- Error reporting writers --------------------------------------------------
+import csv, json, os
+from collections import Counter
+
+def write_error_report(errors, out_dir):
+    os.makedirs(out_dir, exist_ok=True)
+    path = os.path.join(out_dir, "validation_errors.csv")
+    with open(path, "w", newline="", encoding="utf-8") as f:
+        writer = csv.DictWriter(f, fieldnames=["row", "field", "value", "error"])
+        writer.writeheader()
+        writer.writerows(errors)
+    return path
+
+def build_summary(validated_rows, errors):
+    total = len(validated_rows)
+    invalid_rows = {e["row"] for e in errors}
+    by_field = Counter(e["field"] for e in errors)
+    by_error = Counter(e["error"] for e in errors)
+
+    # Top 10 sample errors for quick inspection
+    sample = errors[:10]
+
+    return {
+        "total_rows": total,
+        "invalid_row_count": len(invalid_rows),
+        "valid_row_count": total - len(invalid_rows),
+        "errors_total": len(errors),
+        "errors_by_field": dict(by_field),
+        "errors_by_code": dict(by_error),
+        "sample_errors": sample
+    }
+
+def write_summary(summary, out_dir):
+    os.makedirs(out_dir, exist_ok=True)
+    path = os.path.join(out_dir, "summary.json")
+    with open(path, "w", encoding="utf-8") as f:
+        json.dump(summary, f, indent=2, ensure_ascii=False)
+    return path
+    
 
 def validate_value(field, raw_value, rules):
     errors = []
@@ -263,6 +303,8 @@ COERCERS = {
     # Pass schema's "format" and optional "try_formats" via the validator wrapper:
     "date":  lambda v, fmt=None, try_formats=None: to_date(v, fmt or "%Y-%m-%d", try_formats),
 }
+
+
 if __name__ == "__main__":
     import argparse
     import csv
@@ -289,6 +331,8 @@ if __name__ == "__main__":
     validation_errors = []
     valid_count = 0
     invalid_count = 0
+    
+    
 
     # Row-level validation
     for i, row in enumerate(rows, start=2):  # start=2 accounts for header line
@@ -310,6 +354,7 @@ if __name__ == "__main__":
             invalid_count += 1
         else:
             valid_count += 1
+                        
 
     # ---- Write reports ----
     error_csv = out_dir / "validation_errors.csv"
@@ -344,3 +389,4 @@ if __name__ == "__main__":
     if args.fail_on_errors and len(validation_errors) > 0:
         import sys
         sys.exit(1)
+
