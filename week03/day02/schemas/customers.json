@@ -44,11 +44,6 @@
                 "UK"
             ],
             "default": "AU"
-        },
-        "loyalty_note": {
-            "required": false,
-            "type": "str",
-            "nullable": false
         }
     }
 }

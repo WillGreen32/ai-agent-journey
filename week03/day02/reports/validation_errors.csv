@@ -18,3 +18,9 @@ row,field,value,error
 15,email,@weird@@example..com,pattern_mismatch
 17,age,-1,below_min
 18,age,130,above_max
+20,email,notemail,pattern_mismatch
+21,age,130,above_max
+22,email,,required_missing
+22,country,XX,not_in_allowed_set
+23,age,abc,type_error:int
+23,is_active,maybe,type_error:bool

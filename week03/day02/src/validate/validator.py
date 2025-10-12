@@ -39,6 +39,34 @@ def _normalize_raw(v):
         return None
     return s
 
+# --- Schema self-check --------------------------------------------------------
+def validate_schema_object(schema: dict):
+    if not isinstance(schema, dict) or "fields" not in schema or not isinstance(schema["fields"], dict):
+        raise ValueError("schema_error: top-level object must contain 'fields' mapping")
+
+    for fname, rules in schema["fields"].items():
+        if not isinstance(rules, dict):
+            raise ValueError(f"schema_error:{fname}: rules must be an object")
+        # type sanity
+        t = rules.get("type")
+        if t and t not in {"int", "float", "str", "bool", "date"}:
+            raise ValueError(f"schema_error:{fname}: unsupported type '{t}'")
+        # pattern sanity
+        patt = rules.get("pattern")
+        if patt:
+            try:
+                re.compile(patt)
+            except re.error as e:
+                raise ValueError(f"schema_error:{fname}: invalid regex pattern: {e}")
+        # numeric range sanity
+        if "min" in rules and not isinstance(rules["min"], (int, float)):
+            raise ValueError(f"schema_error:{fname}: 'min' must be number")
+        if "max" in rules and not isinstance(rules["max"], (int, float)):
+            raise ValueError(f"schema_error:{fname}: 'max' must be number")
+        if "min" in rules and "max" in rules and rules["min"] > rules["max"]:
+            raise ValueError(f"schema_error:{fname}: min > max")
+
+
 def to_str(v):
     s = _normalize_raw(v)
     return None if s is None else s  # return trimmed string

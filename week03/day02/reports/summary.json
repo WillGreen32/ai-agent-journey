@@ -1,13 +1,13 @@
 {
-  "total_rows": 18,
-  "invalid_row_count": 11,
+  "total_rows": 22,
+  "invalid_row_count": 15,
   "valid_row_count": 7,
-  "errors_total": 19,
+  "errors_total": 25,
   "errors_by_field": {
-    "email": 7,
-    "is_active": 3,
-    "age": 4,
+    "email": 9,
+    "is_active": 4,
+    "age": 6,
     "signup_date": 2,
-    "country": 3
+    "country": 4
   }
 }
