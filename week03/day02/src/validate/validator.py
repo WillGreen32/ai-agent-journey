@@ -185,6 +185,51 @@ def validate_value(field, raw_value, rules):
             errors.append("above_max")
 
     return value, errors
+
+def validate_row(row_idx: int, row: dict, schema: dict):
+    """
+    Validate one CSV row (dict) against schema['fields'].
+    Returns: (validated_row: dict, row_errors: list[dict])
+    """
+    row_errors = []
+    validated = {}
+
+    # schema is expected to be the full object with "fields": {...}
+    fields = schema["fields"] if "fields" in schema else schema
+
+    for field, rules in fields.items():
+        raw = row.get(field)
+        value, errs = validate_value(field, raw, rules)
+        validated[field] = value
+
+        if errs:
+            for e in errs:
+                row_errors.append({
+                    "row": row_idx,     # CSV row number with header offset applied by caller
+                    "field": field,
+                    "value": raw,
+                    "error": e
+                })
+
+    return validated, row_errors
+
+
+def validate_dataset(rows: list[dict], schema: dict, header_offset: int = 1):
+    """
+    Validate all rows in a dataset.
+    header_offset=1 means the header occupies row 1; first data row is 2.
+    Returns: (validated_rows, all_errors)
+    """
+    all_errors = []
+    validated_rows = []
+
+    for i, row in enumerate(rows, start=1 + header_offset):
+        vrow, rerrs = validate_row(i, row, schema)
+        validated_rows.append(vrow)
+        all_errors.extend(rerrs)
+
+    return validated_rows, all_errors
+
 # --- Missing-value detection helper (uses same normalization rules as coercers) ---
 def is_missing(v) -> bool:
     """
