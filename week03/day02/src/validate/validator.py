@@ -405,6 +405,16 @@ if __name__ == "__main__":
         else:
             valid_count += 1
                         
+    # --- Range checks (numeric bounds, inclusive) ---
+    min_val = rules.get("min")
+    max_val = rules.get("max")
+
+    if value is not None and isinstance(value, (int, float)):
+        if min_val is not None and value < min_val:
+            errors.append("below_min")
+        if max_val is not None and value > max_val:
+            errors.append("above_max")
+
 
     # ---- Write reports ----
     error_csv = out_dir / "validation_errors.csv"
