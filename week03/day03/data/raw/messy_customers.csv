@@ -1,0 +1,4 @@
+customer_id,email,phone,state,comments
+1,  JOHN.DOE@EXAMPLE.COM ,+61 (3) 9876 5432,Vic,"<p>Great   service!</p>"
+2, jane..smith@@gmail.com ,  0499 111 222 ,  new south wales ,"   Loved it   "
+3, , +61-499-333-444 , tasmania ,"😊  Nice store! "

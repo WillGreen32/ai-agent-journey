@@ -1,0 +1,3 @@
+print("  Will.SMITH@Example.COM ".lower().strip())
+print("Tag_Tag".lower())
+print("Path/To/File.TXT".lower())
