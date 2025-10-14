@@ -1,0 +1,4 @@
+state,total_users,invalid_email_rate,duplicates,m1_users,m2_users,m3_users
+NSW,1,False,0,0,1,0
+QLD,1,False,0,0,0,1
+VIC,2,False,0,1,1,0
