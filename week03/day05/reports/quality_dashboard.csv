@@ -1,0 +1,5 @@
+state,total_users,invalid_email_rate,duplicates
+NSW,1,0.0,0
+QLD,1,1.0,0
+SA,2,0.5,0
+VIC,2,0.0,0

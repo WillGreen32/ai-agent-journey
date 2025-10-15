@@ -1,0 +1,7 @@
+user_id,first_name,last_name,email,age,state,signup_date,full_name,is_valid_email,signup_month
+1,Will,Stone,will.stone@example.com,21,VIC,2024-11-12,Will Stone,True,11
+2,Ava,Riley,ava.riley@example.com,23,NSW,2025-01-03,Ava Riley,True,1
+3,Luca,Ng,luca.ng@example,19,QLD,2024-12-21,Luca Ng,False,12
+4,Mia,Chen,mia.chen@example.com,25,VIC,2025-02-10,Mia Chen,True,2
+5,Noah,Patel,,27,SA,2024-10-02,Noah Patel,False,10
+5,Noah,Patel,noah.patel@example.com,27,SA,2024-10-02,Noah Patel,True,10

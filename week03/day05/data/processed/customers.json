@@ -1,0 +1,6 @@
+{"user_id":1,"first_name":"Will","last_name":"Stone","email":"will.stone@example.com","age":21,"state":"VIC","signup_date":"2024-11-12"}
+{"user_id":2,"first_name":"Ava","last_name":"Riley","email":"ava.riley@example.com","age":23,"state":"NSW","signup_date":"2025-01-03"}
+{"user_id":3,"first_name":"Luca","last_name":"Ng","email":"luca.ng@example","age":19,"state":"QLD","signup_date":"2024-12-21"}
+{"user_id":4,"first_name":"Mia","last_name":"Chen","email":"mia.chen@example.com","age":25,"state":"VIC","signup_date":"2025-02-10"}
+{"user_id":5,"first_name":"Noah","last_name":"Patel","email":null,"age":27,"state":"SA","signup_date":"2024-10-02"}
+{"user_id":5,"first_name":"Noah","last_name":"Patel","email":"noah.patel@example.com","age":27,"state":"SA","signup_date":"2024-10-02"}

@@ -1,0 +1,2 @@
+VALIDATION ISSUES:
+- Invalid emails: 2
