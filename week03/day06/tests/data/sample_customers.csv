@@ -1,0 +1,4 @@
+first_name,last_name,email,state,signup_date
+Ana,Smith,ana@example.com,VIC,2024-01-10
+Bob,Jones,bob@example.com,NSW,2024-02-02
+,Lee,bademail,VIC,2024-01-31
