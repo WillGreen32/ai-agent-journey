@@ -1,0 +1,14 @@
+{
+    "input_path": "data/input.csv",
+    "output_path": "data/output_clean.csv",
+    "required_fields": [
+        "id",
+        "name",
+        "email"
+    ],
+    "allowed_states": [
+        "VIC",
+        "NSW",
+        "QLD"
+    ]
+}
