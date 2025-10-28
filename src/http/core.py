@@ -1,28 +1,48 @@
-﻿from dotenv import load_dotenv
+﻿# src/http/core.py
 import os
+import requests
+from dotenv import load_dotenv
 
+# .env is optional—pass base_url in main.py if you prefer
 load_dotenv()
-
-BASE_URL = (os.getenv("API_BASE_URL") or "").rstrip("/")
-TIMEOUT  = float(os.getenv("API_TIMEOUT_SECONDS", "5"))
-RETRIES  = int(os.getenv("API_RETRY_ATTEMPTS", "3"))
+BASE_URL = os.getenv("API_BASE_URL")
 
 class HttpError(Exception):
-    """Base exception for HTTP client errors."""
+    """Custom error for HTTP issues"""
+    pass
 
 class HttpClient:
-    """Tiny scaffold; we’ll implement methods next."""
-    def __init__(self, base_url: str | None = None, timeout: float | None = None, retry_attempts: int | None = None):
-        if not (base_url or BASE_URL):
-            raise ValueError("base_url is required (or set API_BASE_URL in .env)")
-        self.base_url = (base_url or BASE_URL).rstrip("/")
-        self.timeout = timeout or TIMEOUT
-        self.retry_attempts = retry_attempts or RETRIES
+    def __init__(self, base_url=BASE_URL, timeout=5):
+        if not base_url:
+            raise ValueError("Base URL is required. Set API_BASE_URL in .env or pass base_url.")
+        self.base_url = base_url.rstrip("/")
+        self.timeout = timeout
+        self.session = requests.Session()
+        self.session.headers.update({
+            "Content-Type": "application/json",
+            "Accept": "application/json"
+        })
 
-    # placeholder methods (will implement in Build step)
-    def get(self, path: str, **kw):  # noqa: D401
-        """HTTP GET (to be implemented)."""
-        raise NotImplementedError
+    def _join(self, path: str) -> str:
+        if not path.startswith("/"):
+            path = "/" + path
+        return f"{self.base_url}{path}"
 
-    def post(self, path: str, data: dict | None = None, **kw):
-        raise NotImplementedError
+    def _handle_response(self, response):
+        if not response.ok:
+            body_preview = (response.text or "")[:200].replace("\n", " ")
+            raise HttpError(f"Error {response.status_code}: {body_preview}")
+        try:
+            return response.json()
+        except ValueError:
+            return response.text
+
+    def get(self, path, params=None, timeout=None):
+        url = self._join(path)
+        response = self.session.get(url, params=params, timeout=timeout or self.timeout)
+        return self._handle_response(response)
+
+    def post(self, path, data=None, timeout=None):
+        url = self._join(path)
+        response = self.session.post(url, json=data, timeout=timeout or self.timeout)
+        return self._handle_response(response)
