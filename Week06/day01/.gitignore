@@ -1,0 +1,6 @@
+# Environment and secret files
+.env
+*.key
+*.pem
+__pycache__/
+.vscode/
