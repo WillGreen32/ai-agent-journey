@@ -1,0 +1,20 @@
+- id: concise_summary
+  prompt: "Summarize this paragraph in one sentence."
+  temperature: 0.2
+  top_p: 0.9
+  max_tokens: 120
+  model: gpt-4o-mini
+
+- id: creative_story
+  prompt: "Write a two-sentence sci-fi story about discovery."
+  temperature: 1.0
+  top_p: 1.0
+  max_tokens: 160
+  model: gpt-4o-mini
+
+- id: technical_explanation
+  prompt: "Explain how tokenization works in simple terms."
+  temperature: 0.3
+  top_p: 0.8
+  max_tokens: 180
+  model: gpt-4o-mini

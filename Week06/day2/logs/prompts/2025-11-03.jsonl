@@ -1,0 +1,3 @@
+{"id": "concise_summary", "status": "api_error", "model": "gpt-4o-mini", "temperature": 0.2, "top_p": 0.9, "max_tokens": 120, "latency_s": 8.274, "timestamp": "2025-11-03T21:49:18.850826", "error": "No active exception to reraise"}
+{"id": "creative_story", "status": "api_error", "model": "gpt-4o-mini", "temperature": 1.0, "top_p": 1.0, "max_tokens": 160, "latency_s": 7.837, "timestamp": "2025-11-03T21:49:26.688873", "error": "No active exception to reraise"}
+{"id": "technical_explanation", "status": "api_error", "model": "gpt-4o-mini", "temperature": 0.3, "top_p": 0.8, "max_tokens": 180, "latency_s": 7.875, "timestamp": "2025-11-03T21:49:34.565083", "error": "No active exception to reraise"}
