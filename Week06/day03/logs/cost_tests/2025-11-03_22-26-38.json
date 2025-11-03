@@ -1,0 +1,18 @@
+{
+  "timestamp": "2025-11-03T22:26:38.477840",
+  "model": "gpt-4o-mini",
+  "prompt_file": "D:\\AI Agent Journey\\Week06\\day03\\data\\sample_texts\\demo_text.txt",
+  "prompt_tokens": 7,
+  "expected_completion_tokens": 200,
+  "estimated_cost_usd": 0.000404,
+  "warn_cost_threshold": 0.02,
+  "warn_tokens_threshold": 6000,
+  "chunking_used": true,
+  "max_chunk_tokens": 300,
+  "chunks_summary": [
+    {
+      "index": 1,
+      "tokens": 7
+    }
+  ]
+}
