@@ -1,0 +1,4 @@
+﻿{"timestamp":"2025-11-05T10:00:02","model_name":"gpt-4o-mini","total_tokens":120,"latency_s":1.2,"cost_usd":0.0003,"success":true}
+{"timestamp":"2025-11-05T10:03:17","model_name":"gpt-4o-mini","total_tokens":135,"latency_s":1.1,"cost_usd":0.00033,"success":true}
+{"timestamp":"2025-11-05T10:07:41","model_name":"gpt-4-turbo","total_tokens":640,"latency_s":5.0,"cost_usd":0.0064,"success":true}
+{"timestamp":"2025-11-05T10:12:08","model_name":"gpt-4-turbo","total_tokens":610,"latency_s":4.7,"cost_usd":0.0061,"success":true}
